@@ -1,0 +1,126 @@
+#!C:\xampp\php\php.exe
+<?php
+
+/**
+ * Retourne la factorielle d'un entier naturel
+ * @param int $n Un entier dont on veut calculer la factorielle
+ * @return int
+ * @see https://fr.wikipedia.org/wiki/Factorielle
+ */
+function factorielle($n) : int
+{
+	return ($n === 0) ? 1 : $n*factorielle($n-1);
+}
+/**
+ * Retourne la distance entre deux point dans un système orthonormé à 3 dimensions
+ * @param array $coordA Coordonnée du point A
+ * @param array $coordB Coordonnée du point B
+ * @return float
+ * @see https://fr.wikipedia.org/wiki/Factorielle
+ */
+function distanceAB(array $coordA, array $coordB) : float
+{
+	return sqrt( ($coordB[0] - $coordA[0])**2 + ($coordB[1] - $coordA[1])**2 + ($coordB[2] - $coordA[2])**2 );
+}
+
+/**
+ * Fonction à utiliser pour stocker un log
+ * @param string $message Le message de log à traiter
+ * @param string $level le niveau d'erreur
+ * @param array $format la liste des formats à traiter
+ * @return bool
+ */
+function handleLog(string $message, string $level, array $format = ['txt']) : bool
+{
+	if(!writeLog($message, $level, $format)){
+		return false;
+	}
+	return true;
+}
+/**
+ * écrit le log sur les supports demandé 
+ * @param string $message Le message de log à traiter
+ * @param string $level le niveau d'erreur
+ * @param array $format la liste des formats à traiter
+ * @return bool
+ */
+function writeLog(string $message, string $level, array $format) : bool
+{
+	if(in_array('txt', $format)){
+		$fp = fopen('log.txt', 'a');
+		if(!fwrite($fp, formatLog($message, $level, 'txt'))){
+			handleLog("Erreur d'ecriture du fichier de log", 'ERROR');
+		}
+		fclose($fp);
+	}
+	if(in_array('stdout', $format)){
+		echo formatLog($message, $level, 'stdout');
+	}
+	return true;
+}
+/**
+ * Prépare le log avant son écriture
+ * @param string $message Le message de log à traiter
+ * @param string $level le niveau d'erreur
+ * @param string $format le format dans lequelle le log doit être préparé
+ * @return bool
+ */
+function formatLog(string $message, string $level, string $format) : string
+{
+	if($format === 'txt'){
+		return "[".date('Y-m-d H:i:s')."] $level: $message\r\n";
+	}
+	if($format === 'stdout'){
+		return "[".date('Y-m-d H:i:s')."]\r\n$level: $message \r\n";
+	}
+}
+
+
+choix:
+echo "\n==========================================";
+echo "\n[1] Calculer la factorielle d'un entier";
+echo "\n[2] Calculer la disance entre deux points";
+echo "\n[3] Ecrire un log";
+echo "\n[0] quitter";
+echo "\n==========================================";
+echo "\nQue souhaitez vous faire ?";
+$rep = trim(fgets(STDIN));
+
+
+switch ($rep) {
+	case 1:
+		echo "\nDonnez moi un entier naturel naturel positif: ";
+		$n = trim(fgets(STDIN));
+		echo "\nLa factorielle de $n est ". factorielle($n);
+		echo "\n\n";
+		goto choix;
+		break;
+	case 2:
+		echo "\nCoordonnée du point A ";
+		echo "\n(3 dimensions, séparé par une virgule):";
+		$a = trim(fgets(STDIN));
+		echo "\nCoordonnée du point B ";
+		echo "\n(3 dimensions, séparé par une virgule):";
+		$b = trim(fgets(STDIN));
+		$coordA = explode(',', $a);
+		$coordB = explode(',', $b);
+		if (count($coordA) != 3 && count($coordB) != 3){
+			handleLog("Les coordonnées fournis ne sont pas correcte", "ERROR", ['txt', 'stdout']);
+			break;
+		}
+		echo "\nVos deux points sont distants de: ". distanceAB($coordA, $coordB);
+		echo "\n\n";
+		goto choix;
+		break;
+	case 3:
+		handleLog('Please be careful about the responsability of your functions', 'INFO', ['txt', 'stdout']);
+		handleLog('Try not to forget documentation', 'INFO', ['txt', 'stdout']);
+		goto choix;
+		break;
+	case 0:
+		break;
+	default:
+		handleLog("l'utilisateur n'a pas choisi une des options disponible", 'INFO');
+		goto choix;
+		break;
+}

@@ -1,0 +1,11 @@
+[2018-02-09 10:10:08]INFO: l'utilisateur n'a pas choisi une des options disponible
+[2018-02-09 10:10:22]INFO: Please be careful about the responsability of your functions
+[2018-02-09 10:10:22]INFO: Try not to forget documentation
+[2018-02-09 10:14:44]INFO: Les coordonnées fournis ne sont pas correcte
+[2018-02-09 10:23:56]INFO: Please be careful about the responsability of your functions
+[2018-02-09 10:23:56]INFO: Try not to forget documentation
+[2018-02-09 10:24:31] INFO: Please be careful about the responsability of your functions
+[2018-02-09 10:24:31] INFO: Try not to forget documentation
+[2018-02-09 10:31:02] INFO: l'utilisateur n'a pas choisi une des options disponible
+[2018-02-09 10:31:32] INFO: Please be careful about the responsability of your functions
+[2018-02-09 10:31:32] INFO: Try not to forget documentation
