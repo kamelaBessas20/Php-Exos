@@ -1,0 +1,3 @@
+[23/02/2018 14:43:40] [info] Bienvenue sur le site Nicolas!!!
+[23/02/2018 14:51:54] [info] Bienvenue sur le site Nicolas!!!
+[23/02/2018 14:52:15] [warning] Bienvenue sur le site Nicolas!!!
