@@ -1,0 +1,19 @@
+{
+    "name": "etudiant/td11",
+    "authors": [
+        {
+            "name": "pepinierewf3",
+            "email": "pepiniere.wf3@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "psr/log": "^1.0@dev"
+    },
+    "autoload": {
+    	"psr-4":{
+    		"App\\": "Src/"
+    	},
+    	"files": ["App/App.php"]
+    }
+}
