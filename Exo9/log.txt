@@ -1,0 +1,7 @@
+Bienvenue sur le site !!!Bienvenue sur le site !!![21/02/2018 16:20:19] [info] Bienvenue sur le site !!!
+[21/02/2018 16:20:20] [info] Bienvenue sur le site !!!
+[21/02/2018 16:20:21] [info] Bienvenue sur le site !!!
+[21/02/2018 17:15:35] [debug] Bienvenue sur le site !!!
+[21/02/2018 17:28:08] [error] Bienvenue sur le site !!!
+[21/02/2018 17:28:37] [debug] Bienvenue sur le site !!!
+[21/02/2018 17:35:28] [error] Bienvenue sur le site !!!
